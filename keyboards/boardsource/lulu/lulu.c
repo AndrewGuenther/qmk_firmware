@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "encoder.h"
 
-#ifdef ENCODER_ENABLE
+#if defined(ENCODER_ENABLE) && defined(LULU_DEFAULT)
 bool encoder_update_kb(uint8_t index, bool clockwise) {
     if (!encoder_update_user(index, clockwise)) { return false; }
     if (index == 0) {
@@ -22,7 +22,7 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
 }
 #endif
 
-#ifdef OLED_ENABLE
+#if defined(OLED_ENABLE) && defined(LULU_DEFAULT)
 oled_rotation_t oled_init_kb(oled_rotation_t rotation) {
   if (!is_keyboard_master()) {
     return OLED_ROTATION_180;
